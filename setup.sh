@@ -40,14 +40,21 @@ cd /etc/apache2/sites-available
 sudo nano wordpress.conf
 
 <VirtualHost *:80>
-   ServerName yourdomainname.com
+   ServerName staging2.zipmoney.com.au
    DocumentRoot /var/www/wordpress
    DirectoryIndex index.php
    <Directory /var/www/wordpress/>
-      AllowOverride All
-      Order Deny,Allow
-      Allow from all
+ Options Indexes FollowSymLinks MultiViews
+               AllowOverride FileInfo
+               Order allow,deny
+               allow from all
    </Directory>
+       ErrorLog ${APACHE_LOG_DIR}/zipmoney-error.log
+
+       LogLevel warn
+
+       CustomLog ${APACHE_LOG_DIR}/zipmoney-access.log combined
+
 </VirtualHost>
 
 sudo a2ensite wordpress
