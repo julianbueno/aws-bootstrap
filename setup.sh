@@ -23,6 +23,9 @@ sudo /etc/init.d/apache2 restart
 #to configure wp db and db user
 sudo apt-get install phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
+sudo nano /etc/apache2/apache2.conf
+
+# -- > Add this to the config: Include /etc/phpmyadmin/apache.conf
 
 #Check Apache
 #Open a web browser and navigate to http://localhost/. You should see a message saying It works!
