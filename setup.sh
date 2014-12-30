@@ -19,6 +19,7 @@ sudo apt-get update
 sudo apt-get install php5
 #php5 -v
 sudo apt-get install php5 libapache2-mod-php5 php5-mysql
+sudo apt-get install unzip
 sudo /etc/init.d/apache2 restart
 #to configure wp db and db user
 sudo apt-get install phpmyadmin
