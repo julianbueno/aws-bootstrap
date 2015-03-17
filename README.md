@@ -1,4 +1,4 @@
-wordpress-aws
+AWS - Bootstrap
 =============
 
-Create a wordpress instance on latest ubuntu AWS
+Bootstrap scripts for latest ubuntu AWS
