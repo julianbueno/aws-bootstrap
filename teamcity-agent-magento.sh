@@ -64,3 +64,32 @@ sudo update-rc.d teamcity defaults
 # You can always start/stop the agent manually
 sudo /var/TeamCity/bin/agent.sh stop
 sudo /var/TeamCity/bin/agent.sh start
+
+#Install PEAR
+sudo apt-get install php-pear
+sudo apt-get install php5-cli
+sudo apt-get install php5-curl
+sudo apt-get install php5-dev
+
+pear channel-update pear.php.net
+pear update pear
+
+sudo pear channel-discover pear.phpdoc.org
+sudo pear channel-discover bartlett.laurent-laville.org
+sudo pear channel-discover pear.phpunit.de
+sudo pear channel-discover components.ez.no
+sudo pear channel-discover pear.symfony-project.com
+sudo pear channel-discover pear.pdepend.org
+sudo pear channel-discover pear.phpmd.org
+
+sudo pear install bartlett/PHP_CompatInfo
+composer global require "phpunit/phpunit=4.5.*"
+sudo pear install --alldeps PHP_Codesniffer
+sudo pear install pdepend/PHP_Depend-beta
+sudo pear install phpmd/PHP_PMD
+sudo pear install phpunit/phpcpd
+sudo pear install phpunit/phpdcd-beta
+sudo pear install phpdoc/phpDocumentor-alpha
+
+pear channel-discover pear.phing.info
+pear install [--alldeps] phing/phing
