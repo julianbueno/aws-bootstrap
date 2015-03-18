@@ -8,5 +8,6 @@ export PATH=$PATH:/home/bitnami/bin/
 cd home/bitnami/apps/magento/htdocs
 
 modman init
-
-modman clone git@github.com:zipMoney/magento-gateway.git --branch feature/modman
+git config --global user.name "julianbueno"
+git config --global user.email "julian.bueno@gmail.com"
+modman clone https://username:pwd@github.com/zipMoney/magento-gateway.git --branch feature/modman
