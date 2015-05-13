@@ -38,24 +38,34 @@ sudo nano buildAgent.properties
 #Add the following
 sudo nano /etc/init.d/teamcity
 ###########################
-#! /bin/sh
-# /etc/init.d/teamcity 
-# Carry out specific functions when asked to by the system
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          TeamCity Build Agent
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start build agent daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
+#Provide the correct user name:
+USER="ubuntu"
+  
 case "$1" in
-  start)
-    echo "Starting script teamcity "
-    /var/TeamCity/bin/agent.sh start
-    ;;
-  stop)
-    echo "Stopping script teamcity"
-    /var/TeamCity/bin/agent.sh stop
-    ;;
-  *)
-    echo "Usage: /etc/init.d/teamcity {start|stop}"
-    exit 1
-    ;;
+start)
+ su - $USER -c "cd /var/TeamCity/bin ; ./agent.sh start"
+;;
+stop)
+ su - $USER -c "cd /var/TeamCity/bin ; ./agent.sh stop"
+;;
+*)
+  #echo "usage start/stop"
+  echo "Usage: /etc/init.d/teamcity {start|stop}"
+  exit 1
+ ;;
+ 
 esac
-
+ 
 exit 0
 #############################
 sudo chmod +x /etc/init.d/teamcity
