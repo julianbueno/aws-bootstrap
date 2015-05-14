@@ -2,26 +2,17 @@
 # Simple setup.sh for configuring WP on Ubuntu 14.04 LTS EC2 instance
 # for headless setup. 
 
+##########################
+#INSTALL Magento powered by Bitnami (HVM)
+# Linux/Unix, Ubuntu 14.04.1 | 64-bit Amazon Machine Image (AMI) | Updated: 4/23/15 
+#########################
+
 sudo apt-get update
 sudo apt-get upgrade
-
-#mysql
-sudo apt-get install mysql-server-5.6
-sudo apt-get install php5-mysql
-
-#php
-sudo add-apt-repository ppa:ondrej/php5
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install php5
 
 #git
-sudo apt-get update
-sudo apt-get install git
-
-#composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+#sudo apt-get update
+#sudo apt-get install git
 
 #install TC agent
 sudo apt-get install openjdk-7-jre-headless
@@ -75,31 +66,8 @@ sudo update-rc.d teamcity defaults
 sudo /var/TeamCity/bin/agent.sh stop
 sudo /var/TeamCity/bin/agent.sh start
 
-#Install PEAR
-sudo apt-get install php-pear
-sudo apt-get install php5-cli
-sudo apt-get install php5-curl
-sudo apt-get install php5-dev
+#composer
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
 
-pear channel-update pear.php.net
-pear update pear
 
-sudo pear channel-discover pear.phpdoc.org
-sudo pear channel-discover bartlett.laurent-laville.org
-sudo pear channel-discover pear.phpunit.de
-sudo pear channel-discover components.ez.no
-sudo pear channel-discover pear.symfony-project.com
-sudo pear channel-discover pear.pdepend.org
-sudo pear channel-discover pear.phpmd.org
-
-sudo pear install bartlett/PHP_CompatInfo
-composer global require "phpunit/phpunit=4.5.*"
-sudo pear install --alldeps PHP_Codesniffer
-sudo pear install pdepend/PHP_Depend-beta
-sudo pear install phpmd/PHP_PMD
-sudo pear install phpunit/phpcpd
-sudo pear install phpunit/phpdcd-beta
-sudo pear install phpdoc/phpDocumentor-alpha
-
-pear channel-discover pear.phing.info
-pear install [--alldeps] phing/phing
