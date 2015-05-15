@@ -40,7 +40,7 @@ sudo nano /etc/init.d/teamcity
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 #Provide the correct user name:
-USER="ubuntu"
+USER="bitnami"
   
 case "$1" in
 start)
@@ -63,6 +63,7 @@ sudo chmod +x /etc/init.d/teamcity
 sudo update-rc.d teamcity defaults
 
 # You can always start/stop the agent manually
+sudo chown -R bitnami:bitnami /var/TeamCity/
 sudo /var/TeamCity/bin/agent.sh stop
 sudo /var/TeamCity/bin/agent.sh start
 
